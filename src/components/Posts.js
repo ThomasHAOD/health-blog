@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export const Posts = props => {
   useEffect(() => {
     axios.get("/api/hello").then(res => setState(res.data));
   }, []);
+
+  const [state, setState] = useState("");
 
   return (
     <div>
