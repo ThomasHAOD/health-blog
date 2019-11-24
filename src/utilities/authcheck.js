@@ -1,20 +1,34 @@
 import React, { useEffect, useContext } from "react";
 import history from "./history";
-import Context from "./Context";
-import * as ACTIONS from "../store/actions/actions";
+import Context from "./context";
+
+import axios from "axios";
 
 const AuthCheck = () => {
   const context = useContext(Context);
 
   useEffect(() => {
     if (context.authObj.isAuthenticated()) {
+      const profile = context.authObj.userProfile;
       context.handleUserLogin();
-      history.replace("/");
+      context.handleUserAddProfile(profile);
+      axios
+        .post("/api/posts/userprofiletodb", profile)
+        .then(
+          axios
+            .get("/api/get/userprofilefromdb", {
+              params: { email: profile.profile.email }
+            })
+            .then(res => context.handleAddDBProfile(res.data))
+        )
+        .then(history.replace("/"));
     } else {
       context.handleUserLogout();
+      context.handleUserRemoveProfile();
+      context.handleUserRemoveProfile();
       history.replace("/");
     }
-  }, []);
+  }, [context.authObj.userProfile, context]);
 
   return <div></div>;
 };
