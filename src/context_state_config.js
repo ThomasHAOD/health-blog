@@ -70,3 +70,5 @@ const ContextState = () => {
     </div>
   );
 };
+
+export default ContextState;
