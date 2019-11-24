@@ -3,9 +3,9 @@ import history from "./history";
 
 class Auth {
   auth0 = new auth0.WebAuth({
-    domain: "webapp1.auth0.com",
-    clientID: "",
-    redirectUri: "http://localhost:300/callback",
+    domain: "dev-4eaj9cdo.auth0.com",
+    clientID: "2KyU3Apo7znUNmBeO6ssZ9SVb1ytMQ86",
+    redirectUri: "https://localhost:3000/loginsuccess",
     responseType: "token id_token",
     scope: "openid profile email"
   });
