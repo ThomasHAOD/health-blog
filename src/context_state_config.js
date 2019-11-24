@@ -3,6 +3,7 @@ import Context from "./utilities/Context";
 import * as ACTIONS from "./store/actions/actions";
 import * as AuthReducer from "./store/reducers/auth_reducer";
 import * as FormReducer from "./store/reducers/form_reducer";
+import * as PostsReducer from "./store/reducers/post_reducer";
 import Routes from "./Routes";
 import Auth from "./utilities/Auth";
 
@@ -39,6 +40,32 @@ const ContextState = () => {
     );
   };
 
+  const [statePostsReducer, dispatchPosts] = useReducer(
+    PostsReducer.PostsReducer,
+    PostsReducer.initialState
+  );
+
+  const handleSetPosts = posts => {
+    dispatchPosts(ACTIONS.set_db_posts(posts));
+  };
+
+  const handleRemovePosts = () => {
+    dispatchPosts(ACTIONS.remove_db_posts());
+  };
+
+  const [stateAuth, dispatchAuth] = useReducer(
+    AuthReducer.AuthReducer,
+    AuthReducer.initialState
+  );
+
+  const handleDBProfile = profile => {
+    dispatchAuth(ACTIONS.set_db_profile(profile));
+  };
+
+  const handleRemoveDBProfile = () => {
+    dispatchAuth(ACTIONS.remove_db_profile());
+  };
+
   const handleAuthentication = props => {
     if (props.locaiton.hash) {
       auth.handleAuth();
@@ -58,6 +85,15 @@ const ContextState = () => {
           profileState: stateAuthReducer.profile,
           handleUserLogin: () => handleLogin(),
           handleUserLogout: () => handleLogout(),
+
+          dbProfileState: stateAuthReducer.db_profile,
+
+          handleAddDBProfile: profile => handleDBProfile(profile),
+          handleRemoveDBProfile: () => handleRemoveDBProfile(),
+
+          postsState: statePostsReducer.posts,
+          handleAddPosts: posts => handleSetPosts(posts),
+          handleRemovePosts: () => handleRemovePosts(),
 
           handleAuth: props => handleAuthentication(props),
           authObj: auth
