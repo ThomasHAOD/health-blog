@@ -58,8 +58,6 @@ const ContextState = () => {
           profileState: stateAuthReducer.profile,
           handleUserLogin: () => handleLogin(),
           handleUserLogout: () => handleLogout(),
-          handleUserAddProfile: profile => handleAddProfile(profile),
-          handleUserRemoveProfile: () => handleRemoveProfile(),
 
           handleAuth: props => handleAuthentication(props),
           authObj: auth
