@@ -26,7 +26,7 @@ export const login_success = () => {
   };
 };
 
-export const login_Failure = () => {
+export const login_failure = () => {
   return {
     type: ACTION_TYPES.LOGIN_FAILURE
   };
