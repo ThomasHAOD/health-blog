@@ -45,9 +45,9 @@ const Posts = props => {
   return (
     <div>
       {context.authState ? (
-        <Link to="/addpost">
+        <Link to="/newpost">
           <Button variant="contained" color="primary">
-            Add Post
+            New Post
           </Button>
         </Link>
       ) : null}

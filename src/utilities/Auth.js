@@ -5,7 +5,7 @@ class Auth {
   auth0 = new auth0.WebAuth({
     domain: "dev-4eaj9cdo.auth0.com",
     clientID: "2KyU3Apo7znUNmBeO6ssZ9SVb1ytMQ86",
-    redirectUri: "https://localhost:3000/loginsuccess",
+    redirectUri: "http://localhost:3000/login_success",
     responseType: "token id_token",
     scope: "openid profile email"
   });

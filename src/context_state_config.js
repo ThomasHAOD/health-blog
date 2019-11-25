@@ -66,8 +66,16 @@ const ContextState = () => {
     dispatchAuth(ACTIONS.remove_db_profile());
   };
 
+  const handleAddProfile = profile => {
+    dispatchAuthReducer(ACTIONS.add_profile(profile));
+  };
+
+  const handleRemoveProfile = () => {
+    dispatchAuthReducer(ACTIONS.remove_profile());
+  };
+
   const handleAuthentication = props => {
-    if (props.locaiton.hash) {
+    if (props.location.hash) {
       auth.handleAuth();
     }
   };
@@ -90,6 +98,8 @@ const ContextState = () => {
 
           handleAddDBProfile: profile => handleDBProfile(profile),
           handleRemoveDBProfile: () => handleRemoveDBProfile(),
+          handleUserAddProfile: profile => handleAddProfile(profile),
+          handleUserRemoveProfile: () => handleRemoveProfile(),
 
           postsState: statePostsReducer.posts,
           handleAddPosts: posts => handleSetPosts(posts),
