@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import history from "./utilities/history";
 import Context from "./utilities/Context";
-import AuthCheck from "./utilities/authcheck";
+import AuthCheck from "./utilities/AuthCheck";
 
 import Nav from "./components/Nav";
 import LoginSuccess from "./components/LoginSuccess";
