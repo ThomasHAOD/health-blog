@@ -57,7 +57,7 @@ const ShowPost = props => {
           <div>
             <h1>{stateLocal.post_title}</h1>
             <h3>{stateLocal.post_body}</h3>
-            <p>{stateLocal.post_author}</p>
+            <p>By {stateLocal.post_author}</p>
           </div>
         ) : null}
       </div>

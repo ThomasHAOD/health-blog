@@ -33,6 +33,7 @@ const Routes = () => {
           <Switch>
             <Route exact path="/" component={Posts} />
             <Route path="/post/:pid" component={ShowPost} />
+
             <PrivateRoute
               path="/newpost"
               auth={context.authState}
