@@ -8,6 +8,7 @@ import Nav from "./components/Nav";
 import LoginSuccess from "./components/LoginSuccess";
 import Posts from "./components/Posts";
 import NewPost from "./components/NewPost";
+import ShowPost from "./components/ShowPost";
 
 const PrivateRoute = ({ component: Component, auth }) => (
   <Route
@@ -31,7 +32,12 @@ const Routes = () => {
         <div>
           <Switch>
             <Route exact path="/" component={Posts} />
-            <Route exact path="/newpost" component={NewPost} />
+            <Route path="/post/:pid" component={ShowPost} />
+            <PrivateRoute
+              path="/newpost"
+              auth={context.authState}
+              component={NewPost}
+            />
             <Route path="/authcheck" component={AuthCheck} />
             <Route
               path="/login_success"

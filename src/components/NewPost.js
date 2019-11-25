@@ -28,13 +28,16 @@ const NewPost = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        <label>Title:</label>
         <input id="title" label="Title" margin="normal" type="text" />
         <br />
+        <label>Body:</label>
+
         <input
           id="body"
           label="Body"
-          multiline
-          rowsMax="4"
+          multiline="true"
+          rowsmax="4"
           margin="normal"
           type="text"
         />
