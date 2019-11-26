@@ -17,7 +17,6 @@ const NewPost = () => {
       username: username,
       uid: user_id
     };
-
     axios
       .post("/api/post/posttodb", data)
       .then(response => console.log(response))
@@ -32,15 +31,7 @@ const NewPost = () => {
         <input id="title" label="Title" margin="normal" type="text" />
         <br />
         <label>Body:</label>
-
-        <input
-          id="body"
-          label="Body"
-          multiline="true"
-          rowsmax="4"
-          margin="normal"
-          type="text"
-        />
+        <input id="body" label="Body" margin="normal" type="text" />
         <br />
         <button type="submit"> Submit </button>
       </form>
