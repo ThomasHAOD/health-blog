@@ -14,14 +14,11 @@ const AuthCheck = () => {
       context.handleUserLogin();
       context.handleUserAddProfile(profile);
       axios
-        .post("http://localhost:5000/api/post/userprofiletodb", profile)
-        .then(
-          axios
-            .get("http://localhost:5000/api/get/userprofilefromdb", {
-              params: { email: profile.email }
-            })
-            .then(res => context.handleAddDBProfile(res.data))
-        )
+        .get("http://localhost:5000/api/get/userprofilefromdb", {
+          params: { email: profile.email }
+        })
+        .then(res => context.handleAddDBProfile(res.data))
+
         .then(history.replace("/"));
     } else {
       context.handleUserLogout();
