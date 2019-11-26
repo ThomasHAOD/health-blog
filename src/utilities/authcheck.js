@@ -10,6 +10,7 @@ const AuthCheck = () => {
   useEffect(() => {
     if (context.authObj.isAuthenticated()) {
       const profile = context.authObj.userProfile;
+      console.log(profile);
       context.handleUserLogin();
       context.handleUserAddProfile(profile);
       axios
@@ -17,7 +18,7 @@ const AuthCheck = () => {
         .then(
           axios
             .get("http://localhost:5000/api/get/userprofilefromdb", {
-              params: { email: "tam@tam.com" }
+              params: { email: profile.email }
             })
             .then(res => context.handleAddDBProfile(res.data))
         )
